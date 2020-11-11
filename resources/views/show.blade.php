@@ -11,7 +11,7 @@
                         <label for="">{{ date('Y-m-d h:i:s', strtoTime($data['created_at']))}} oleh {{ $data['author'] }}</label>
                     </div>
                     <div class="card-body">
-                        {{$data['content']}}
+                        {!! $data['content'] !!}
                     </div>
 
                 </div>

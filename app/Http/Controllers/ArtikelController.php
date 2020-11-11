@@ -42,6 +42,7 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
             'author' => 'required',
@@ -50,19 +51,25 @@ class ArtikelController extends Controller
         // return $request;
         $ds = file_get_contents(storage_path() . '/app/public/data.json');
         $datas = json_decode($ds);
-        $id[] = $datas;
+        $id = count($datas) + 1;
+        foreach ($datas as $key) {
+            if ($key->id == $id) {
+                $id = $id+1;
+            }
+        }
         // return count($datas);
         $data = [
-            'id' => count($datas) + 1,
+            'id' => $id,
             'title' => $request['title'],
             'author' => $request['author'],
             'content' => $request['content'],
             'created_at' => now(),
             'updated_at' => null,
         ];
-        if($datas != null){
+
+        if ($datas != null) {
             array_push($datas, $data);
-        }else{
+        } else {
             $datas = $data;
         }
         try {
@@ -97,11 +104,9 @@ class ArtikelController extends Controller
                 $data['content'] = $item->content;
                 $data['author'] = $item->author;
                 $data['created_at'] = $item->created_at;
-
             }
         }
         return view('show', compact('data'));
-        
     }
 
     /**
@@ -122,7 +127,6 @@ class ArtikelController extends Controller
                 $data['content'] = $item->content;
                 $data['author'] = $item->author;
                 $data['created_at'] = $item->created_at;
-
             }
         }
         return view('edit', compact('data'));
@@ -141,7 +145,7 @@ class ArtikelController extends Controller
             'title' => 'required',
             'author' => 'required',
             'content' => 'required'
-            ]);
+        ]);
 
         $ds = file_get_contents(storage_path() . '/app/public/data.json');
         $datas = json_decode($ds);
@@ -169,8 +173,6 @@ class ArtikelController extends Controller
         } catch (\Throwable $th) {
             return $th;
         }
-
-
     }
 
     /**
@@ -181,6 +183,23 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        return 'Hapus method';
+
+        $ds = file_get_contents(storage_path() . '/app/public/data.json');
+        $datas = json_decode($ds);
+        $index =0;
+        foreach ($datas as $key) {
+            if ($key->id == $id) {
+                unset($datas[$index]);
+            }
+            $index++;
+        }
+        try {
+            $save = json_encode(array_values($datas), JSON_PRETTY_PRINT);
+            file_put_contents(storage_path() . '/app/public/data.json', stripslashes($save));
+            $path = storage_path() . '/app/public/data.json';
+            return redirect('/artikel');
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 }
