@@ -34,7 +34,7 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <form action="artikel/{{ $data[$i]['id'] }}" method="POST">
+                                <form action="{{ url('/artikel/'. $data[$i]['id']) }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <div class="modal-header">
