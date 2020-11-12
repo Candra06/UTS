@@ -20,7 +20,7 @@
                         <label for="exampleInputPassword1">Konten</label>
                        <div >
                         <textarea id="summernote"
-                        name="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate sit laboriosam recusandae eaque, aperiam incidunt dolor impedit enim qui nemo corporis, obcaecati adipisci quos earum iure harum ullam fuga beatae.</textarea>
+                        name="content"></textarea>
                        </div>
                         {{-- <textarea name="content" class="form-control "
                             style="height: 100px!important" rows="10" cols="10" id="editor">

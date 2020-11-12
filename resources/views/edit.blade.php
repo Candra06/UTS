@@ -20,9 +20,10 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Konten</label>
-                        <textarea name="content" class="form-control " style="height: 100px!important" rows="10" cols="10" id="editor">
-                            {{$data['content']}}
-                        </textarea>
+                        <div >
+                            <textarea id="summernote"
+                            name="content">{{$data['content']}}</textarea>
+                           </div>
                     </div>
                     <a href="{{url('/')}}"><button type="submit" class="btn btn-danger">Kembali</button></a>
                     <button type="submit" class="btn btn-primary">Simpan</button>
