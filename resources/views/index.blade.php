@@ -26,7 +26,7 @@
                         {!! substr($data[$i]['content'], 0, 300) !!}
                         </div>
                         <div class="card-footer text-muted d-flex flex-row-reverse">
-                            <a href="artikel/{{ $data[$i]['id'] }}">Selengkapnya</a>
+                            <a href="{{ url('/artikel/'. $data[$i]['id']) }}">Selengkapnya</a>
                         </div>
                     </div>
                     <!-- Modal -->
