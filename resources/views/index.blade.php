@@ -10,7 +10,7 @@
                             <div class="row d-flex flex-row-reverse">
                                 <div class="col-md-6 d-flex flex-row-reverse">
                                     <a data-toggle="modal" data-target="#exampleModal-{{ $data[$i]['id'] }}" href="#exampleModal" class="btn btn-danger ml-1" style="height: 35px;"><i class="fa fa-trash" ></i> </a>   <a
-                                        href="/artikel/{{ $data[$i]['id'] }}/edit" class="btn btn-primary mr-2" style="height: 35px;"><i class="fa fa-edit"></i> </a>
+                                        href="{{ url('/artikel/'.$data[$i]['id'].'/edit')}}" class="btn btn-primary mr-2" style="height: 35px;"><i class="fa fa-edit"></i> </a>
 
                                 </div>
                                 <div class="col-md-6">
